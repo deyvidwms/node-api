@@ -1,5 +1,14 @@
+// import * as dotenv from 'dotenv';
 import express from 'express';
+import db from './config/dbMongoConnect.js';
 
+db.on("erro", console.log.bind(console, 'Erro de conexão'));
+db.once("open", ()=>{
+    console.log("Conexão com o banco feita com sucesso!")
+});
+
+import * as dotenv from 'dotenv';
+// dotenv.config()
 const app = express();
 
 app.use(express.json());
